@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/CRUDOperationSpringBoot/EmployeeCRUDDemo/target/*.jar'
 
   deploy:
     runs-on: windows-latest
@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'SpringBoot-Deploy-Azure-Demo'
           slot-name: 'Production'
-          package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A1FD7E511A6643CA88EB7A4D77E73EBF }}
+          package: 'CRUDOperationSpringBoot/EmployeeCRUDDemo/target/*.jar'
+          publish-profile: ${{ secrets.__publishingprofilesecretname__ }}
