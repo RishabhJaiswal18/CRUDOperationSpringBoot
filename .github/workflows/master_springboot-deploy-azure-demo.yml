@@ -25,31 +25,29 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Maven
-        working-directory: CRUDOperationSpringBoot/EmployeeCRUDDemo
+        working-directory: EmployeeCRUDDemo
         run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/CRUDOperationSpringBoot/EmployeeCRUDDemo/target/*.jar'
+          path: EmployeeCRUDDemo/target/*.jar
 
   deploy:
     runs-on: windows-latest
     needs: build
-    
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: java-app
-      
+
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'SpringBoot-Deploy-Azure-Demo'
           slot-name: 'Production'
-          package: 'CRUDOperationSpringBoot/EmployeeCRUDDemo/target/*.jar'
+          package: '*.jar'
           publish-profile: ${{ secrets.__publishingprofilesecretname__ }}
-
