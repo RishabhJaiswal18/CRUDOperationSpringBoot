@@ -26,7 +26,7 @@ public class EmployeeController {
 
 	@GetMapping(value = "/test")
 	public String getHelloWorld() {
-		return "Hii!! Hello World";
+		return "Hii!! This is application now deployed on Azure Portal";
 	}
 
 	@GetMapping(value = "/records/{id}")
