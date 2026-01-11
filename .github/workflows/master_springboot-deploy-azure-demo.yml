@@ -25,6 +25,7 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Maven
+        working-directory: CRUDOperationSpringBoot/EmployeeCRUDDemo
         run: mvn clean install
 
       - name: Upload artifact for deployment job
@@ -51,3 +52,4 @@ jobs:
           slot-name: 'Production'
           package: 'CRUDOperationSpringBoot/EmployeeCRUDDemo/target/*.jar'
           publish-profile: ${{ secrets.__publishingprofilesecretname__ }}
+
